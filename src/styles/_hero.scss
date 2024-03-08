@@ -1,0 +1,60 @@
+.hero {
+  height: 100vh;
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+  @include breakpoint-down(small) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.hero_svg {
+  svg {
+    @include breakpoint-down(small) {
+      width: 17rem;
+      height: auto;
+    }
+  }
+}
+
+.hero_image {
+  height: calc(100vh - 4.875rem);
+  object-fit: cover;
+  width: 100vw;
+  max-height: none;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-left: 0;
+  transform: none;
+  -o-object-fit: cover;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.hero_left_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 1rem;
+  align-items: center;
+  p {
+    width: 26rem;
+  }
+  @include breakpoint-down(small) {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.hero-background {
+  background: url("src/assets/HeroBackground.jpg");
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

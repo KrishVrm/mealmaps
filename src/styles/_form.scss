@@ -1,0 +1,71 @@
+.form-container {
+  height: 100vh;
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: 40% auto;
+  align-items: center;
+  @include breakpoint-down(small) {
+    display: flex;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  @include breakpoint-down(small) {
+    width: 100vw;
+    margin: 0 2rem;
+  }
+}
+
+input {
+  padding: 1rem 0.5rem;
+  border-radius: 6px;
+  background: none;
+  border: 2px solid white;
+  color: white;
+  border-color: var(--light-gray);
+}
+
+#male-radio,
+#female-radio {
+  display: none;
+}
+
+.gender-svgs {
+  @include breakpoint-down(small) {
+    display: none;
+  }
+}
+
+.radio-container {
+  display: flex;
+  gap: 1rem;
+
+  input {
+    width: auto;
+  }
+}
+
+.avatar-svgs {
+  width: 4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.unit-font {
+  opacity: 0.7;
+  text-align: end;
+}
+
+.input-container {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  align-items: center;
+  justify-content: space-between;
+}

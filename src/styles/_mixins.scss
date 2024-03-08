@@ -1,0 +1,53 @@
+// FLEX-BOX MIXINS
+@mixin flex-box($fd, $jc, $ai, $wp) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $fd;
+    flex-wrap: $wp;
+  }
+  
+  @mixin flex-center($fd) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $fd;
+  }
+  
+  // Desktop ONLY Hover
+  @mixin hoverEffect {
+    @media (hover: hover) and (pointer: fine){
+      @content;
+    }
+  }  
+  
+  // Breakpoints
+  @media (min-width: 64em) {
+    // styles go here
+  }
+  
+  // 640px, 1024px, 1400px
+  $breakpoints-up: (
+    "medium": "40em",
+    "large": "64em",
+    "xlarge": "87.5em",
+  );
+  
+  // 639px, 1023px, 1399px
+  $breakpoints-down: (
+    "small": "39.9375em",
+    "medium": "63.9375em",
+    "large": "87.4375em",
+  );
+  
+  @mixin breakpoint-up($size) {
+    @media (min-width: map-get($breakpoints-up, $size)) {
+      @content;
+    }
+  }
+  
+  @mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+      @content;
+    }
+  }

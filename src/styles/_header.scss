@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 0.6rem 5rem;
+  background: var(--gray);
+  z-index: 100;
+  @include breakpoint-down(small) {
+    justify-content: space-between;
+  }
+}
+
+nav {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.nav-links {
+  font-size: 15px;
+  font-family: var(--sans-serif-font);
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--light-gray);
+}
+
+#navbar a.active {
+  position: relative;
+  &::before {
+    content: "";
+    height: 6px;
+    width: 100%;
+    position: absolute;
+    background: var(--lime-green);
+    top: 3rem;
+    right: 1px;
+  }
+}
