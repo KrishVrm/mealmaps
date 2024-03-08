@@ -1,8 +1,8 @@
-# React + Vite
+# MealMaps
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MealMaps is a app where users can calculate their calories, plan diets, explore meals according to their requirements and much more!
 
-Currently, two official plugins are available:
+# Technology Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Vite + React.js
+Spoonacular API
