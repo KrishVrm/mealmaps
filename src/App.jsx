@@ -27,8 +27,8 @@ function App() {
     gender: "",
     activity: "Sedentary",
   });
-  const [caloriesPerDay, setCaloriesPerDay] = useState(0);
-  const [caloriesPerMeal, setCaloriesPerMeal] = useState(0);
+  const [caloriesPerDay, setCaloriesPerDay] = useState(null);
+  const [caloriesPerMeal, setCaloriesPerMeal] = useState(null);
   const [showMaleSelected, setShowMaleSelected] = useState(false);
   const [showFemaleSelected, setShowFemaleSelected] = useState(false);
   const [showMaleUnselected, setShowMaleUnselected] = useState(true);
@@ -47,21 +47,23 @@ function App() {
 
   // Fetching Data from Spoonacular API
   useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get(
-          `https://api.spoonacular.com/recipes/findByNutrients?apiKey=${API_KEY}&minCalories=${
-            caloriesPerMeal - 50
-          }&maxCalories=${caloriesPerMeal + 50}&number=10`
-        );
-        setDishArray(response.data);
-        console.log("first response data (dishes)", response.data);
-        setIsLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    })();
+    if (caloriesPerMeal !== null) {
+      (async () => {
+        try {
+          setIsLoading(true);
+          const response = await axios.get(
+            `https://api.spoonacular.com/recipes/findByNutrients?apiKey=${API_KEY}&minCalories=${
+              caloriesPerMeal - 20
+            }&maxCalories=${caloriesPerMeal + 20}&number=10`
+          );
+          setDishArray(response.data);
+          console.log("first response data (dishes)", response.data);
+          setIsLoading(false);
+        } catch (err) {
+          console.log(err);
+        }
+      })();
+    }
   }, [caloriesPerMeal]);
 
   function calculateCaloriesPerDay({ age, weight, height, gender, activity }) {
@@ -276,7 +278,7 @@ function App() {
       </div>
 
       <div className="meal-section-container">
-        {caloriesPerDay !== 0 && (
+        {caloriesPerDay !== null && (
           <>
             <h2>Suggested Meals</h2>
             <p>
@@ -322,11 +324,11 @@ function App() {
           </>
         )}
         <div id="meal-section" className="cards-container">
-          {/* {isLoading ? (
+          {isLoading ? (
             <h2>Loading Meals...</h2>
-          ) : ( */}
-          <Card dishArray={dishArray} />
-          {/* )} */}
+          ) : (
+            <Card dishArray={dishArray} />
+          )}
         </div>
       </div>
 
