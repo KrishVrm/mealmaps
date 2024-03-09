@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <NavLink to="/">
-        <img style={{ height: "4rem" }} src={AppLogo} alt="MealMaps" />
+        <img style={{ height: "57px" }} src={AppLogo} alt="MealMaps" />
       </NavLink>
       <nav id="navbar">
         <NavLink className="nav-links" to="/">

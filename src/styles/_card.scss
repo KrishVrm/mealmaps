@@ -69,7 +69,11 @@
   overflow-x: scroll;
   position: absolute;
   color: var(--white);
-  padding: 2rem;
+  padding: 1rem;
+
+  h3 {
+    margin-bottom: 2rem;
+  }
 }
 
 .nutrients-row-container {

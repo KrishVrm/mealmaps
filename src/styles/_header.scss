@@ -4,7 +4,7 @@ header {
   align-items: center;
   position: sticky;
   top: 0;
-  padding: 0.6rem 5rem;
+  padding: 0.5rem 5rem;
   background: var(--gray);
   z-index: 100;
   @include breakpoint-down(small) {
@@ -26,17 +26,23 @@ nav {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--light-gray);
+  opacity: 0.6;
+  transition: all 0.1s;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 #navbar a.active {
   position: relative;
+  opacity: 1;
   &::before {
     content: "";
-    height: 6px;
+    height: 4px;
     width: 100%;
     position: absolute;
     background: var(--lime-green);
-    top: 3rem;
+    top: 45px;
     right: 1px;
   }
 }

@@ -63,11 +63,11 @@ const Window = ({
               ></div>
 
               <div className="similar-recipes-container">
-                <h2>Similar Recipes</h2>
+                <h3>Similar Recipes</h3>
                 {similarRecipes.map((element) => {
                   return (
                     <>
-                      <h4>{element.title}</h4>
+                      <p>{element.title}</p>
                       <a target="_blank" href={element.sourceUrl}>
                         Source Link
                       </a>
@@ -107,9 +107,9 @@ const Window = ({
                   return (
                     <>
                       <div>
-                        <h4
+                        <p
                           key={element.id}
-                        >{`${element.amount} ${element.unit} of ${element.name}  `}</h4>
+                        >{`${element.amount} ${element.unit} of ${element.name}  `}</p>
                       </div>
                     </>
                   );
@@ -119,20 +119,21 @@ const Window = ({
                 instructions.map((element) => {
                   return (
                     <>
-                      <h4>{element.step}</h4>
+                      <p>{element.step}</p>
                     </>
                   );
                 })}
             </div>
 
             <div className="nutrition-container">
-              <h2>Nutrition</h2>
+              <h3>Nutrition</h3>
+              <hr />
               {nutrition.map((element, index) => {
                 return (
                   <>
-                    <h4
+                    <p
                       id={element.id}
-                    >{`${element.name}: ${element.amount} ${element.unit}`}</h4>
+                    >{`${element.name}: ${element.amount} ${element.unit}`}</p>
                   </>
                 );
               })}

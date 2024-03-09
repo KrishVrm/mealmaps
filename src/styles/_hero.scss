@@ -7,6 +7,9 @@
   @include breakpoint-down(small) {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    gap: 3rem;
+    height: auto;
   }
 }
 
@@ -32,6 +35,10 @@
   -o-object-fit: cover;
   object-fit: cover;
   object-position: bottom;
+
+  @include breakpoint-down(small) {
+    height: calc(50vh - 4.875rem);
+  }
 }
 
 .hero_left_content {
@@ -40,6 +47,7 @@
   justify-content: center;
   gap: 1rem;
   align-items: center;
+
   p {
     width: 26rem;
     @include breakpoint-down(small) {
@@ -50,6 +58,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin: 0 2rem;
   }
 }
 
