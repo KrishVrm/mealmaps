@@ -1,16 +1,13 @@
 import React from "react";
 import Header from "../global_components/Header";
+import HeroImage from "../assets/HeroBackground.jpg";
 
 const Hero = () => {
   return (
     <>
       <Header />
       <section className="hero">
-        <img
-          className="hero_image"
-          src="src/assets/HeroBackground.jpg"
-          alt=""
-        />
+        <img className="hero_image" src={HeroImage} alt="HeroBackground" />
         <div className="hero_left_content">
           <h1>Eat Like Never Before With MealMaps!</h1>
           <p>

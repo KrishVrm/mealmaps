@@ -1,15 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import AppLogo from "../assets/Logo.png";
 
 const Header = () => {
   return (
     <header>
       <NavLink to="/">
-        <img
-          style={{ height: "4rem" }}
-          src="src/assets/Logo.png"
-          alt="MealMaps"
-        />
+        <img style={{ height: "4rem" }} src={AppLogo} alt="MealMaps" />
       </NavLink>
       <nav id="navbar">
         <NavLink className="nav-links" to="/">
