@@ -38,11 +38,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   gap: 1rem;
   align-items: center;
   p {
     width: 26rem;
+    @include breakpoint-down(small) {
+      width: auto;
+    }
   }
   @include breakpoint-down(small) {
     align-items: center;

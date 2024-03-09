@@ -223,6 +223,11 @@ a:hover {
   width: 26rem;
 }
 @media (max-width: 39.9375em) {
+  .hero_left_content p {
+    width: auto;
+  }
+}
+@media (max-width: 39.9375em) {
   .hero_left_content {
     align-items: center;
     justify-content: center;
