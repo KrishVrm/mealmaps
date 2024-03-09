@@ -5,17 +5,27 @@
   align-items: center;
   flex-direction: column;
   gap: 3rem;
+
   .content-container {
     display: flex;
     flex-direction: column;
-    // margin: 8rem;
     gap: 2rem;
+
+    @include breakpoint-down(medium) {
+      width: 80vw;
+    }
+
     .content-subcontainer {
       h2 {
         color: var(--lime-green);
       }
+
       p {
         width: 45rem;
+        font-size: 16px;
+        @include breakpoint-down(medium) {
+          width: auto;
+        }
       }
 
       &:nth-child(2),

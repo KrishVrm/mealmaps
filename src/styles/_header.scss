@@ -9,6 +9,7 @@ header {
   z-index: 100;
   @include breakpoint-down(small) {
     justify-content: space-between;
+    padding: 0.6rem 0rem;
   }
 }
 
