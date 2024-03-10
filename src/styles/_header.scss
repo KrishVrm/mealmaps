@@ -8,8 +8,7 @@ header {
   background: var(--gray);
   z-index: 100;
   @include breakpoint-down(small) {
-    justify-content: space-between;
-    padding: 0.6rem 0rem;
+    padding: 0.6rem 2rem;
   }
 }
 
@@ -33,6 +32,12 @@ nav {
   }
 }
 
+#navbar {
+  @include breakpoint-down(small) {
+    display: none;
+  }
+}
+
 #navbar a.active {
   position: relative;
   opacity: 1;
@@ -44,5 +49,38 @@ nav {
     background: var(--lime-green);
     top: 45px;
     right: 1px;
+  }
+}
+
+.hamburger-react {
+  display: none;
+
+  @include breakpoint-down(small) {
+    display: block;
+  }
+}
+
+.mobo-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #00000045;
+  z-index: 999;
+
+  .mobo-navlinks {
+    background: var(--gray);
+    height: 35%;
+    width: 80%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    overflow-x: hidden;
+    position: absolute;
+    color: var(--white);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 }

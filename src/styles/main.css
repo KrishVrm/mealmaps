@@ -65,8 +65,7 @@ header {
 }
 @media (max-width: 39.9375em) {
   header {
-    justify-content: space-between;
-    padding: 0.6rem 0rem;
+    padding: 0.6rem 2rem;
   }
 }
 
@@ -90,6 +89,12 @@ nav {
   opacity: 1;
 }
 
+@media (max-width: 39.9375em) {
+  #navbar {
+    display: none;
+  }
+}
+
 #navbar a.active {
   position: relative;
   opacity: 1;
@@ -102,6 +107,39 @@ nav {
   background: var(--lime-green);
   top: 45px;
   right: 1px;
+}
+
+.hamburger-react {
+  display: none;
+}
+@media (max-width: 39.9375em) {
+  .hamburger-react {
+    display: block;
+  }
+}
+
+.mobo-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2705882353);
+  z-index: 999;
+}
+.mobo-navbar .mobo-navlinks {
+  background: var(--gray);
+  height: 35%;
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  overflow-x: hidden;
+  position: absolute;
+  color: var(--white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .cta {
@@ -407,8 +445,42 @@ input {
   color: var(--white);
   padding: 1rem;
 }
-.window-content-container h3 {
-  margin-bottom: 2rem;
+@media (max-width: 63.9375em) {
+  .window-content-container {
+    width: 90%;
+  }
+}
+.window-content-container .close-btn {
+  display: none;
+}
+@media (max-width: 39.9375em) {
+  .window-content-container .close-btn {
+    display: block;
+    margin-left: auto;
+  }
+}
+@media (max-width: 39.9375em) {
+  .window-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+  }
+}
+@media (max-width: 39.9375em) {
+  .window-content-container .first-container {
+    order: 2;
+  }
+}
+@media (max-width: 39.9375em) {
+  .window-content-container .second-container {
+    order: 1;
+  }
+}
+@media (max-width: 39.9375em) {
+  .window-content-container .nutrition-container {
+    order: 3;
+  }
 }
 
 .nutrients-row-container {

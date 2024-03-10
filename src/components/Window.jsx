@@ -68,15 +68,23 @@ const Window = ({
                   return (
                     <>
                       <p>{element.title}</p>
-                      <a target="_blank" href={element.sourceUrl}>
-                        Source Link
-                      </a>
+                      <button className="secondary-btn">
+                        <a target="_blank" href={element.sourceUrl}>
+                          Source Link
+                        </a>
+                      </button>
                     </>
                   );
                 })}
               </div>
             </div>
             <div className="second-container">
+              <button
+                onClick={() => setIsWindowOpen(false)}
+                className="secondary-btn close-btn"
+              >
+                Close
+              </button>
               <h2>{dishData.title}</h2>
               <h4>Servings: {dishData.servings}</h4>
               <h4>Weight Per Serving: {nutrition.weightPerServing}</h4>

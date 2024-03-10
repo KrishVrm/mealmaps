@@ -71,8 +71,41 @@
   color: var(--white);
   padding: 1rem;
 
-  h3 {
-    margin-bottom: 2rem;
+  @include breakpoint-down(medium) {
+    width: 90%;
+  }
+
+  .close-btn {
+    display: none;
+    @include breakpoint-down(small) {
+      display: block;
+      margin-left: auto;
+    }
+  }
+
+  @include breakpoint-down(small) {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  .first-container {
+    @include breakpoint-down(small) {
+      order: 2;
+    }
+  }
+
+  .second-container {
+    @include breakpoint-down(small) {
+      order: 1;
+    }
+  }
+
+  .nutrition-container {
+    @include breakpoint-down(small) {
+      order: 3;
+    }
   }
 }
 
