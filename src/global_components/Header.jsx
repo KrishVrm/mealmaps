@@ -8,22 +8,33 @@ const Header = () => {
   const navMoboRef = useRef();
   document.body.style.overflow = isNavOpen ? "hidden" : "scroll";
 
+  // // Hide Header on Scroll
+  // var oldScroll = window.scrollY;
+  // document.addEventListener("scroll", () => {
+  //   var currentScroll = window.scrollY;
+  //   if (currentScroll < oldScroll) {
+  //     document.getElementById("header").style.top = "0";
+  //   } else {
+  //     document.getElementById("header").style.top = "-100px";
+  //   }
+  //   oldScroll = window.scrollY;
+  // });
+
+  // Close Mobile Nav by Clicking anywhere outside the Nav
   useEffect(() => {
     const handler = (e) => {
       if (!navMoboRef.current.contains(e.target)) {
         setIsNavOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handler);
-
     return () => {
       document.removeEventListener("mousedown", handler);
     };
   });
 
   return (
-    <header>
+    <header id="header">
       <NavLink to="/">
         <img style={{ height: "57px" }} src={AppLogo} alt="MealMaps" />
       </NavLink>

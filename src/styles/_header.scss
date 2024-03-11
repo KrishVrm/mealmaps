@@ -7,6 +7,7 @@ header {
   padding: 0.5rem 5rem;
   background: var(--gray);
   z-index: 100;
+  transition: top 0.2s;
   @include breakpoint-down(small) {
     padding: 0.6rem 2rem;
   }
@@ -82,5 +83,9 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
+    a.active {
+      opacity: 1;
+    }
   }
 }

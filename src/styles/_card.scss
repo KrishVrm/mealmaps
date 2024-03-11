@@ -4,6 +4,12 @@
   align-items: center;
   gap: 0.8rem;
   margin-bottom: 4rem;
+
+  p {
+    @include breakpoint-down(small) {
+      margin: 0 2rem;
+    }
+  }
 }
 
 .card {
@@ -18,6 +24,7 @@
   transition: all 0.3s;
   background: var(--gray);
   justify-items: center;
+  border-radius: var(--border-radius);
 
   // &:hover {
   //   transform: scale(0.99);
@@ -39,7 +46,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 100px;
+  border-radius: 50%;
 }
 
 .cards-container {
