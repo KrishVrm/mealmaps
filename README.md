@@ -22,7 +22,7 @@ MealMaps is a app where users can calculate their calories, plan diets, explore 
 - Open your terminal and enter the following command and hit enter.
 
 ```shell
-git clone [https://github.com/MilanCommunity/Milan.git](https://github.com/KrishVrm/mealmaps)
+git clone https://github.com/KrishVrm/mealmaps
 ```
 
 - This will clone the repository to your local storage and you can start working on it.
