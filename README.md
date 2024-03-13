@@ -22,7 +22,7 @@ MealMaps is a app where users can calculate their calories, plan diets, explore 
 - Open your terminal and enter the following command and hit enter.
 
 ```shell
-git clone [https://github.com/MilanCommunity/Milan.git](https://github.com/KrishVrm/mealmaps)
+git clone https://github.com/KrishVrm/mealmaps
 ```
 
 - This will clone the repository to your local storage and you can start working on it.
@@ -33,7 +33,7 @@ git clone [https://github.com/MilanCommunity/Milan.git](https://github.com/Krish
 
 Follow the below steps to setup the Frontend locally. We are using `npm` as the package manager. So make sure you have `node` and `npm` installed in your system.
 
-**If not installed, please read [installation guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).**
+**If not installed, please read [installation guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).**ß
 
 ## Installing dependencies ⏳
 

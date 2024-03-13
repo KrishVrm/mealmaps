@@ -194,7 +194,6 @@ function App() {
                 if (!numberRegex.test(e.target.value)) {
                   e.target.value = "";
                 } else {
-                  // setHeight(e.target.value);
                   setForm((prev) => {
                     return {
                       ...prev,
@@ -222,7 +221,6 @@ function App() {
                 if (!numberRegex.test(e.target.value)) {
                   e.target.value = "";
                 } else {
-                  // setWeight(e.target.value);
                   setForm((prev) => {
                     return {
                       ...prev,
@@ -261,7 +259,7 @@ function App() {
             className="cta"
             onClick={handleCalculate}
           >
-            Calculate
+            Calculate Calories
           </button>
         </div>
 
