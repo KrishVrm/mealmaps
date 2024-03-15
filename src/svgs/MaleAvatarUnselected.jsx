@@ -2,7 +2,7 @@ import React from "react";
 
 const MaleAvatarUnselected = () => {
   return (
-    <label htmlFor="male-radio">
+    <label htmlFor="male-radio" className="label-container">
       <svg
         className="avatar-svgs male-avatar"
         width="69"
@@ -11,7 +11,7 @@ const MaleAvatarUnselected = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_488_262)">
+        <g clipPath="url(#clip0_488_262)">
           <path
             d="M36.0422 41.7873C42.2274 41.7873 47.2416 36.7732 47.2416 30.5879C47.2416 24.4027 42.2274 19.3885 36.0422 19.3885C29.8569 19.3885 24.8428 24.4027 24.8428 30.5879C24.8428 36.7732 29.8569 41.7873 36.0422 41.7873Z"
             fill="#FFB6B6"
@@ -33,7 +33,7 @@ const MaleAvatarUnselected = () => {
             cy="34.5"
             r="33.5"
             stroke="#D4D4D4"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </g>
         <defs>
@@ -42,6 +42,7 @@ const MaleAvatarUnselected = () => {
           </clipPath>
         </defs>
       </svg>
+      <span className="input-title">Male</span>
     </label>
   );
 };

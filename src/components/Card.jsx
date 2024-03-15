@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Window from "./Window";
 
-const Card = ({ dishArray }) => {
-  const apiKey = "4ace843bbba94a86b532d81045caea70";
+const Card = ({ dishArray, apiKey }) => {
   const [isWindowOpen, setIsWindowOpen] = useState(false);
   document.body.style.overflow = isWindowOpen ? "hidden" : "scroll";
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [dishID, setDishID] = useState();
+  const [dishID, setDishID] = useState(null);
 
   const [dishData, setDishData] = useState({
     title: "",
@@ -37,43 +36,45 @@ const Card = ({ dishArray }) => {
 
   // Nutrition by ID API
   useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get(
-          `https://api.spoonacular.com/recipes/${dishID}/information?apiKey=${apiKey}&includeNutrition=true`
-        );
-        console.log("this is nutrition widget", response);
-        setDishData((prev) => {
-          return {
-            ...prev,
-            title: response.data.title,
-            image: response.data.image,
-            servings: response.data.servings,
-          };
-        });
+    if (dishArray.length !== 0) {
+      (async () => {
+        try {
+          setIsLoading(true);
+          const response = await axios.get(
+            `https://api.spoonacular.com/recipes/${dishID}/information?apiKey=${apiKey}&includeNutrition=true`
+          );
+          console.log("this is nutrition widget", response);
+          setDishData((prev) => {
+            return {
+              ...prev,
+              title: response.data.title,
+              image: response.data.image,
+              servings: response.data.servings,
+            };
+          });
 
-        console.log(response.data.nutrition);
-        const responseNutritionData = response.data.nutrition;
+          console.log(response.data.nutrition);
+          const responseNutritionData = response.data.nutrition;
 
-        setNutrition(responseNutritionData.nutrients);
+          setNutrition(responseNutritionData.nutrients);
 
-        setIngredients(responseNutritionData.ingredients);
+          setIngredients(responseNutritionData.ingredients);
 
-        setDiet({
-          ...diet,
-          vegan: response.data.vegan,
-          veg: response.data.vegetarian,
-          glutenFree: response.data.glutenFree,
-          dairyFree: response.data.dairyFree,
-        });
+          setDiet({
+            ...diet,
+            vegan: response.data.vegan,
+            veg: response.data.vegetarian,
+            glutenFree: response.data.glutenFree,
+            dairyFree: response.data.dairyFree,
+          });
 
-        setInstructions(response.data.analyzedInstructions[0].steps);
-        setIsLoading(false);
-      } catch (error) {
-        // console.log(error)
-      }
-    })();
+          setInstructions(response.data.analyzedInstructions[0].steps);
+          setIsLoading(false);
+        } catch (error) {
+          // console.log(error)
+        }
+      })();
+    }
   }, [dishID]);
 
   return (
@@ -130,6 +131,7 @@ const Card = ({ dishArray }) => {
           isLoading={isLoading}
           dishID={dishID}
           instructions={instructions}
+          apiKey={apiKey}
         />
       )}
     </>

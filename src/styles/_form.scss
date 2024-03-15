@@ -20,7 +20,6 @@
 }
 
 input {
-  padding: 1rem 0.5rem;
   border-radius: var(--border-radius);
   background: none;
   border: 2px solid white;
@@ -29,6 +28,20 @@ input {
   padding: 13px;
   font-size: 14px;
   font-family: var(--sans-serif-font);
+}
+
+.label-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  gap: 7px;
+
+  span {
+    text-transform: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
 }
 
 #male-radio,
@@ -44,7 +57,7 @@ input {
 
 .radio-container {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 
   input {
     width: auto;
@@ -71,4 +84,14 @@ input {
   grid-template-columns: 30% 60% 10%;
   align-items: center;
   justify-content: space-between;
+}
+
+.mobo-text-align-center {
+  @include breakpoint-down(small) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 }

@@ -4,35 +4,38 @@ import axios from "axios";
 const Window = ({
   setIsWindowOpen,
   isWindowOpen,
-  diet,
   nutrition,
   isLoading,
   dishData,
   ingredients,
   dishID,
   instructions,
+  apiKey,
 }) => {
-  const apiKey = "4ace843bbba94a86b532d81045caea70";
   const [showIngredients, setShowIngredients] = useState(true);
   const [showRecipe, setShowRecipe] = useState(false);
   const [similarRecipes, setSimilarRecipes] = useState([]);
 
   const windowRef = useRef();
 
+  // Fetching Similar Recipes.
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get(
-          `https://api.spoonacular.com/recipes/${dishID}/similar?apiKey=${apiKey}&number=1`
-        );
-        console.log("similar recipes", response);
-        setSimilarRecipes(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    if (isWindowOpen) {
+      (async () => {
+        try {
+          const response = await axios.get(
+            `https://api.spoonacular.com/recipes/${dishID}/similar?apiKey=${apiKey}&number=1`
+          );
+          console.log("similar recipes", response);
+          setSimilarRecipes(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
   }, []);
 
+  // Close window by clicking anywhere outside it.
   useEffect(() => {
     const handler = (e) => {
       if (!windowRef.current.contains(e.target)) {

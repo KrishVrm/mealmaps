@@ -1,0 +1,15 @@
+.breadcrumb {
+  background: var(--gray);
+  opacity: 0.9;
+  backdrop-filter: blur(13px);
+  height: 4rem;
+  width: 15rem;
+  border-radius: var(--border-radius);
+  color: white;
+  display: flex;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 14px 20px;
+  border: 2px solid #b52e2e;
+}

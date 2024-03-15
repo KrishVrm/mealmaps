@@ -7,7 +7,7 @@ header {
   padding: 0.5rem 5rem;
   background: var(--gray);
   z-index: 100;
-  transition: top 0.2s;
+  transition: top 450ms;
   @include breakpoint-down(small) {
     padding: 0.6rem 2rem;
   }
@@ -69,6 +69,7 @@ nav {
   right: 0;
   background: #00000045;
   z-index: 999;
+  backdrop-filter: blur(1px);
 
   .mobo-navlinks {
     background: var(--gray);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Hero from "./components/Hero";
 import "./styles/main.css";
 import Card from "./components/Card";
@@ -12,18 +12,17 @@ import MaleAvatarSelected from "./svgs/MaleAvatarSelected";
 import FemaleAvatarUnselected from "./svgs/FemaleAvatarUnselected";
 import MaleAvatarUnselected from "./svgs/MaleAvatarUnselected";
 import Footer from "./global_components/Footer";
-import dotenv from "dotenv";
 
 function App() {
-  const API_KEY = "4ace843bbba94a86b532d81045caea70";
   const numberRegex = /^[0-9]*$/;
   const stringRegex = /^[a-zA-Z]+$/;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   // useStates
   const [form, setForm] = useState({
-    age: { value: 0, unit: "yrs" },
-    weight: { value: 0, unit: "kgs" },
-    height: { value: 0, unit: "cms" },
+    age: { value: "", unit: "yrs" },
+    weight: { value: "", unit: "kgs" },
+    height: { value: "", unit: "cms" },
     gender: "",
     activity: "Sedentary",
   });
@@ -35,6 +34,7 @@ function App() {
   const [showFemaleUnselected, setShowFemaleUnselected] = useState(true);
   const [dishArray, setDishArray] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showFormError, setShowFormError] = useState(false);
 
   // Dropdown Options
   const activityOptions = [
@@ -52,7 +52,7 @@ function App() {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            `https://api.spoonacular.com/recipes/findByNutrients?apiKey=${API_KEY}&minCalories=${
+            `https://api.spoonacular.com/recipes/findByNutrients?apiKey=${apiKey}&minCalories=${
               caloriesPerMeal - 20
             }&maxCalories=${caloriesPerMeal + 20}&number=10`
           );
@@ -102,9 +102,19 @@ function App() {
   // Handle Calculate Button
   function handleCalculate() {
     const cals = calculateCaloriesPerDay(form);
-    console.log(form);
-    setCaloriesPerDay(cals);
-    setCaloriesPerMeal(Math.round(cals / 3));
+    if (
+      form.activity !== "" &&
+      form.age.value !== "" &&
+      form.weight.value !== "" &&
+      form.height.value !== "" &&
+      form.gender !== ""
+    ) {
+      setCaloriesPerDay(cals);
+      setCaloriesPerMeal(Math.round(cals / 3));
+      setShowFormError(false);
+    } else {
+      setShowFormError(true);
+    }
   }
 
   return (
@@ -113,7 +123,10 @@ function App() {
 
       <div className="form-container" id="form-section">
         <div className="form">
-          <h2>Fill In Your Details </h2>
+          <div className="mobo-text-align-center">
+            <h2>Fill In Your Details </h2>
+            <p>This helps us know how much calories your body needs.</p>
+          </div>
           <div className="input-container">
             <h4 className="input-title">Gender</h4>
             <div className="radio-container">
@@ -133,12 +146,10 @@ function App() {
                   setShowFemaleUnselected(true);
                 }}
               />
-
               {showMaleUnselected && <MaleAvatarUnselected />}
               {showMaleSelected && <MaleAvatarSelected />}
               {showFemaleUnselected && <FemaleAvatarUnselected />}
               {showFemaleSelected && <FemaleAvatarSelected />}
-
               <input
                 type="radio"
                 id="female-radio"
@@ -254,13 +265,27 @@ function App() {
               }}
             />
           </div>
-          <button
-            style={{ justifyContent: "center" }}
-            className="cta"
-            onClick={handleCalculate}
+          <div
+            className="button-error-container"
+            style={{ position: "relative" }}
           >
-            Calculate Calories
-          </button>
+            <button
+              style={{
+                justifyContent: "center",
+                width: "100%",
+              }}
+              className="cta"
+              onClick={handleCalculate}
+            >
+              Calculate Calories
+            </button>
+            <span
+              className="error-message"
+              style={{ bottom: showFormError && "-25px" }}
+            >
+              Please fill in all the fields.
+            </span>
+          </div>
         </div>
 
         {/* No gender selected */}
@@ -277,7 +302,7 @@ function App() {
 
       <div className="meal-section-container">
         {caloriesPerDay !== null && (
-          <>
+          <div className="mobo-text-align-center">
             <h2>Suggested Meals</h2>
             <p>
               You need{" "}
@@ -319,13 +344,13 @@ function App() {
               meals in a day. Here are some of the meals that contain the
               required calories.
             </p>
-          </>
+          </div>
         )}
         <div id="meal-section" className="cards-container">
           {isLoading ? (
             <h2>Loading Meals...</h2>
           ) : (
-            <Card dishArray={dishArray} />
+            <Card apiKey={apiKey} dishArray={dishArray} />
           )}
         </div>
       </div>

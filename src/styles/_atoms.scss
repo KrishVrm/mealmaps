@@ -48,6 +48,9 @@ h2 {
 
 h3 {
   font-size: 25px;
+  @include breakpoint-down(small) {
+    font-size: 20px;
+  }
 }
 
 a {
@@ -74,4 +77,20 @@ a {
   background: none;
   font-size: 1em;
   font-weight: 600;
+}
+
+.error-message {
+  color: red;
+  font-family: var(--sans-serif-font);
+  font-style: italic;
+  text-transform: none;
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  transition: bottom 0.1s;
+  z-index: -1;
+}
+
+.transitioning {
+  border: 2px solid red;
 }

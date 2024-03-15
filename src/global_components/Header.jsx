@@ -8,17 +8,17 @@ const Header = () => {
   const navMoboRef = useRef();
   document.body.style.overflow = isNavOpen ? "hidden" : "scroll";
 
-  // // Hide Header on Scroll
-  // var oldScroll = window.scrollY;
-  // document.addEventListener("scroll", () => {
-  //   var currentScroll = window.scrollY;
-  //   if (currentScroll < oldScroll) {
-  //     document.getElementById("header").style.top = "0";
-  //   } else {
-  //     document.getElementById("header").style.top = "-100px";
-  //   }
-  //   oldScroll = window.scrollY;
-  // });
+  // Hide Header on Scroll
+  var oldScroll = window.scrollY;
+  document.addEventListener("scroll", () => {
+    var currentScroll = window.scrollY;
+    if (currentScroll < oldScroll) {
+      document.getElementById("header").style.top = "0";
+    } else {
+      document.getElementById("header").style.top = "-100px";
+    }
+    oldScroll = window.scrollY;
+  });
 
   // Close Mobile Nav by Clicking anywhere outside the Nav
   useEffect(() => {
