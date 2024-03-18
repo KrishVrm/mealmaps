@@ -7,7 +7,13 @@ const Hero = () => {
     <>
       <Header />
       <section className="hero">
-        <img className="hero_image" src={HeroImage} alt="HeroBackground" />
+        <img
+          loading="eager"
+          decoding="async"
+          className="hero_image"
+          src={HeroImage}
+          alt="HeroBackground"
+        />
         <div className="hero_left_content">
           <h1>Eat Like Never Before With MealMaps!</h1>
           <p>

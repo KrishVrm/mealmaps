@@ -102,6 +102,7 @@ function App() {
   // Handle Calculate Button
   function handleCalculate() {
     const cals = calculateCaloriesPerDay(form);
+    const scrollInto = document.getElementById("meal-cards-and-heading");
     if (
       form.activity !== "" &&
       form.age.value !== "" &&
@@ -109,9 +110,12 @@ function App() {
       form.height.value !== "" &&
       form.gender !== ""
     ) {
+      setShowFormError(false);
+      setInterval(() => {
+        !isLoading && scrollInto.scrollIntoView();
+      }, 1000);
       setCaloriesPerDay(cals);
       setCaloriesPerMeal(Math.round(cals / 3));
-      setShowFormError(false);
     } else {
       setShowFormError(true);
     }
@@ -300,7 +304,7 @@ function App() {
         </div>
       </div>
 
-      <div className="meal-section-container">
+      <div id="meal-cards-and-heading" className="meal-section-container">
         {caloriesPerDay !== null && (
           <div className="mobo-text-align-center">
             <h2>Suggested Meals</h2>
