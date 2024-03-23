@@ -30,7 +30,7 @@ const Card = ({ dishArray, apiKey }) => {
 
   const handleCardClick = (e) => {
     setIsWindowOpen(true);
-    setDishID(e.target.parentElement.id);
+    setDishID(e.target.id);
   };
 
   // Nutrition by ID API
@@ -78,9 +78,14 @@ const Card = ({ dishArray, apiKey }) => {
 
   return (
     <>
-      {dishArray.map((element, index) => {
+      {dishArray.map((element) => {
         return (
-          <div key={element.id} id={element.id} className="card">
+          <div
+            key={element.id}
+            id={element.id}
+            className="card"
+            onClick={handleCardClick}
+          >
             <div
               className="card-image"
               style={{
@@ -113,9 +118,9 @@ const Card = ({ dishArray, apiKey }) => {
 
               {/* <p>Calories = {element.calories}</p> */}
             </div>
-            <button onClick={handleCardClick} className="cta">
+            {/* <button onClick={handleCardClick} className="cta">
               More Info
-            </button>
+            </button> */}
           </div>
         );
       })}

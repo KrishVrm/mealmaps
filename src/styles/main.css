@@ -441,28 +441,37 @@ input {
 }
 
 .card {
-  height: auto;
   width: 20rem;
-  display: grid;
-  padding: 2rem;
   align-items: center;
-  grid-template-rows: auto 60% auto;
-  justify-content: space-between;
-  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
   transition: all 0.3s;
   background: var(--gray);
   justify-items: center;
   border-radius: var(--border-radius);
+  min-height: 24rem;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  position: relative;
+  cursor: pointer;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: none;
+}
+.card:hover {
+  transform: scale(0.97);
 }
 @media (max-width: 39.9375em) {
   .card {
-    min-height: 30rem;
-    max-height: -moz-max-content;
-    max-height: max-content;
     width: 90vw;
     display: flex;
     justify-content: center;
-    padding: 2rem;
     flex-direction: column;
   }
 }
@@ -480,8 +489,9 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 5rem;
+  gap: 4rem;
   position: relative;
+  margin: 0 2rem;
 }
 
 .window {

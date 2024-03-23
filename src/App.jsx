@@ -16,7 +16,7 @@ import Footer from "./global_components/Footer";
 function App() {
   const numberRegex = /^[0-9]*$/;
   const stringRegex = /^[a-zA-Z]+$/;
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = "4ace843bbba94a86b532d81045caea70";
 
   // useStates
   const [form, setForm] = useState({
@@ -102,7 +102,6 @@ function App() {
   // Handle Calculate Button
   function handleCalculate() {
     const cals = calculateCaloriesPerDay(form);
-    const scrollInto = document.getElementById("meal-cards-and-heading");
     if (
       form.activity !== "" &&
       form.age.value !== "" &&
@@ -111,9 +110,6 @@ function App() {
       form.gender !== ""
     ) {
       setShowFormError(false);
-      setInterval(() => {
-        !isLoading && scrollInto.scrollIntoView();
-      }, 1000);
       setCaloriesPerDay(cals);
       setCaloriesPerMeal(Math.round(cals / 3));
     } else {
@@ -306,7 +302,10 @@ function App() {
 
       <div id="meal-cards-and-heading" className="meal-section-container">
         {caloriesPerDay !== null && (
-          <div className="mobo-text-align-center">
+          <div
+            style={{ textAlign: "center", marginBottom: "2rem" }}
+            className="mobo-text-align-center"
+          >
             <h2>Suggested Meals</h2>
             <p>
               You need{" "}

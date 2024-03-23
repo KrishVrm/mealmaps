@@ -13,30 +13,37 @@
 }
 
 .card {
-  height: auto;
   width: 20rem;
-  display: grid;
-  padding: 2rem;
   align-items: center;
-  grid-template-rows: auto 60% auto;
-  justify-content: space-between;
-  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
   transition: all 0.3s;
   background: var(--gray);
   justify-items: center;
   border-radius: var(--border-radius);
+  min-height: 24rem;
+  max-height: max-content;
+  position: relative;
+  cursor: pointer;
 
-  // &:hover {
-  //   transform: scale(0.99);
-  // }
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: none;
+  }
+
+  &:hover {
+    transform: scale(0.97);
+  }
 
   @include breakpoint-down(small) {
-    min-height: 30rem;
-    max-height: max-content;
     width: 90vw;
     display: flex;
     justify-content: center;
-    padding: 2rem;
     flex-direction: column;
   }
 }
@@ -54,8 +61,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 5rem;
+  gap: 4rem;
   position: relative;
+  margin: 0 2rem;
 }
 .window {
   position: fixed;

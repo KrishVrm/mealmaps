@@ -22,15 +22,17 @@ const Header = () => {
 
   // Close Mobile Nav by Clicking anywhere outside the Nav
   useEffect(() => {
-    const handler = (e) => {
-      if (!navMoboRef.current.contains(e.target)) {
-        setIsNavOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
+    if (isNavOpen) {
+      const handler = (e) => {
+        if (!navMoboRef.current.contains(e.target)) {
+          setIsNavOpen(false);
+        }
+      };
+      document.addEventListener("mousedown", handler);
+      return () => {
+        document.removeEventListener("mousedown", handler);
+      };
+    }
   });
 
   return (
