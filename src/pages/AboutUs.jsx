@@ -22,7 +22,7 @@ const aboutTeamArray = [
     description: "Our newbie coder.",
   },
   {
-    name: "Mahin",
+    name: "Shreya",
     occupation: "The Hibernating Hippo",
     image: "",
     description: "Thinks out of the box.",

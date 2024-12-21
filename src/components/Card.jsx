@@ -4,7 +4,7 @@ import Window from "./Window";
 
 const Card = ({ dishArray, apiKey }) => {
   const [isWindowOpen, setIsWindowOpen] = useState(false);
-  document.body.style.overflow = isWindowOpen ? "hidden" : "scroll";
+  document.body.style.overflow = isWindowOpen ? "hidden" : "visible";
 
   const [isLoading, setIsLoading] = useState(false);
 
