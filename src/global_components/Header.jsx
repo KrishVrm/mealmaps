@@ -6,7 +6,7 @@ import Hamburger from "hamburger-react";
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navMoboRef = useRef();
-  document.body.style.overflow = isNavOpen ? "hidden" : "scroll";
+  document.body.style.overflow = isNavOpen ? "hidden" : "visible";
 
   // Hide Header on Scroll
   var oldScroll = window.scrollY;
