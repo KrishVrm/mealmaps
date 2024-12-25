@@ -3,6 +3,7 @@
   --white: #ffffff;
   --charcoal: #1a1a1a;
   --lime-green: #bed081;
+  --yellow: #f9a825;
   --light-gray: #d4d4d4;
   --gray: #212121;
   --serif-font: "Frank Ruhl Libre", serif;
@@ -252,6 +253,12 @@ a:hover {
   border: 2px solid red;
 }
 
+.icon-btn {
+  background: none;
+  color: white;
+  padding: 3px;
+}
+
 .hero {
   height: 100vh;
   display: grid;
@@ -360,9 +367,13 @@ input {
   border: 2px solid white;
   color: white;
   border-color: var(--light-gray);
-  padding: 13px;
+  padding: 10px 13px;
   font-size: 14px;
   font-family: var(--sans-serif-font);
+  transition: all ease 100ms;
+}
+input:hover, input:focus {
+  border-color: var(--lime-green);
 }
 
 .label-container {
@@ -426,6 +437,15 @@ input {
     text-align: center;
     margin-bottom: 2rem;
   }
+}
+
+.gender-image-container {
+  height: 25rem;
+  width: auto;
+}
+.gender-image-container svg {
+  height: 100%;
+  width: 100%;
 }
 
 .meal-section-container {
@@ -500,26 +520,34 @@ input {
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.2705882353);
+  background: var(--gray);
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
   z-index: 999;
+}
+.window .icon-btn {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  z-index: 99;
+}
+
+.nutrition_div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .window-content-container {
   display: grid;
-  grid-template-columns: 20% 40% auto;
+  grid-template-columns: 20% 50% auto;
   justify-content: space-between;
-  background: var(--gray);
-  height: 100%;
-  width: 80%;
-  overflow-y: scroll;
   position: absolute;
   color: var(--white);
-  padding: 1rem;
-}
-@media (max-width: 63.9375em) {
-  .window-content-container {
-    width: 90%;
-  }
+  padding: 2rem 9rem 2rem 2rem;
+  height: 100%;
+  width: 100%;
 }
 .window-content-container .close-btn {
   display: none;
@@ -538,6 +566,20 @@ input {
     width: 100%;
   }
 }
+.window-content-container .first-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.window-content-container .first-container h3 {
+  text-align: center;
+}
+.window-content-container .first-container .secondary-btn {
+  padding: 0;
+}
+.window-content-container .first-container :nth-child(1) {
+  margin-bottom: 1rem;
+}
 @media (max-width: 39.9375em) {
   .window-content-container .first-container {
     order: 2;
@@ -548,10 +590,23 @@ input {
     order: 1;
   }
 }
+.window-content-container .second-container_button_container {
+  margin: 1rem 0;
+  display: flex;
+  gap: 2rem;
+  border-bottom: 2px solid;
+}
 @media (max-width: 39.9375em) {
   .window-content-container .nutrition-container {
     order: 3;
   }
+}
+.window-content-container .nutrition-container hr {
+  margin: 1rem 0;
+  height: 2px;
+  border-width: 0;
+  color: white;
+  background-color: white;
 }
 
 .nutrients-row-container {
@@ -641,4 +696,34 @@ footer {
   right: 2rem;
   padding: 14px 20px;
   border: 2px solid #b52e2e;
+}
+
+.error_page svg {
+  height: auto;
+  width: 20rem;
+}
+
+.mealplan_and_cardscontainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.meal_plan_container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.meal_plan_container .card-image {
+  height: 5rem;
+  width: 5rem;
+}
+.meal_plan_container_card {
+  background-color: var(--gray);
+  display: grid;
+  grid-template-columns: 30% auto;
+  width: 25rem;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem;
+  width: 32rem;
 }/*# sourceMappingURL=main.css.map */

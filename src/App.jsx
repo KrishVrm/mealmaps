@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import Hero from "./components/Hero";
 import "./styles/main.css";
 import Card from "./components/Card";
+import MealPlan from "./components/MealPlan";
 import axios from "axios";
 import Select from "react-select";
+import ErrorPage from "./components/ErrorPage";
 import GenderNotSelected from "./svgs/GenderNotSelected";
 import MaleSelected from "./svgs/MaleSelected";
 import FemaleSelected from "./svgs/FemaleSelected";
@@ -26,6 +28,39 @@ function App() {
     gender: "",
     activity: "Sedentary",
   });
+  const react_selectCustomStyles = {
+    option: (baseStyles, state) => ({
+      ...baseStyles,
+      backgroundColor: state.isSelected
+        ? "var(--lime-green)" // Change background color when option is selected
+        : state.isFocused
+        ? "#f0a500" // Change background color when option is hovered
+        : baseStyles.backgroundColor, // Default background color
+
+      backgroundColor: state.isFocused
+        ? "var(--lime-green)"
+        : baseStyles.backgroundColor, // Change hover color
+      color: state.isFocused ? "var(--charcoal)" : baseStyles.color, // Optional: change text color
+    }),
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+      background: "none",
+      borderWidth: "2px",
+      borderColor:
+        state.isFocused || state.isPressed
+          ? "var(--lime-green)"
+          : baseStyles.borderColor, // Change border color
+      color: "var(--white)",
+      boxShadow: state.isFocused ? "var(--lime-green)" : baseStyles.boxShadow,
+      "&:hover": {
+        borderColor: "var(--lime-green)", // Change border color on hover
+      },
+    }),
+    menu: (baseStyles) => ({
+      ...baseStyles,
+      background: "var(--gray)",
+    }),
+  };
   const [caloriesPerDay, setCaloriesPerDay] = useState(null);
   const [caloriesPerMeal, setCaloriesPerMeal] = useState(null);
   const [showMaleSelected, setShowMaleSelected] = useState(false);
@@ -35,7 +70,7 @@ function App() {
   const [dishArray, setDishArray] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
-
+  const [errorPage, setErrorPage] = useState(false);
   // Dropdown Options
   const activityOptions = [
     { value: "Sedentary", label: "Sedentary" },
@@ -60,7 +95,9 @@ function App() {
           console.log("first response data (dishes)", response.data);
           setIsLoading(false);
         } catch (err) {
-          console.log(err);
+          setIsLoading(false);
+          console.log("this is error", err);
+          err.response.status == 402 && setErrorPage(true);
         }
       })();
     }
@@ -105,8 +142,11 @@ function App() {
     if (
       form.activity !== "" &&
       form.age.value !== "" &&
+      form.age.value < 100 &&
       form.weight.value !== "" &&
+      form.weight.value < 2000 &&
       form.height.value !== "" &&
+      form.height.value < 300 &&
       form.gender !== ""
     ) {
       setShowFormError(false);
@@ -172,6 +212,7 @@ function App() {
             <h4 className="input-title">Age</h4>
             <input
               type="text"
+              placeholder="Your vintage, in years?  "
               onChange={(e) => {
                 if (!numberRegex.test(e.target.value)) {
                   e.target.value = "";
@@ -191,6 +232,7 @@ function App() {
             <h4 className="input-title">Height</h4>
             <input
               type="text"
+              placeholder="Your vertical greatness in numbers?"
               onChange={(e) => {
                 // const heightRegex =
                 //   /^(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-6][0-9]|27[0-2])$/;
@@ -220,6 +262,7 @@ function App() {
             <h4 className="input-title">Weight</h4>
             <input
               type="text"
+              placeholder="How much gravity loves you?"
               onChange={(e) => {
                 // const weightRegex = /^(?:[0-2][0-7][0-2]|442)$/;
                 // if (stringRegex.test(e.target.value)) {
@@ -252,17 +295,7 @@ function App() {
                 });
               }}
               options={activityOptions}
-              styles={{
-                control: (baseStyles, state) => ({
-                  ...baseStyles,
-                  background: "none",
-                  color: "var(--white)",
-                }),
-                menu: (baseStyles, state) => ({
-                  ...baseStyles,
-                  background: "var(--gray)",
-                }),
-              }}
+              styles={react_selectCustomStyles}
             />
           </div>
           <div
@@ -291,10 +324,8 @@ function App() {
         {/* No gender selected */}
         <div className="gender-image-container">
           {form.gender == "" && <GenderNotSelected />}
-
           {/* Male SVG */}
           {form.gender == "male" && <MaleSelected />}
-
           {/* Female SVG */}
           {form.gender == "female" && <FemaleSelected />}
         </div>
@@ -349,12 +380,26 @@ function App() {
             </p>
           </div>
         )}
-        <div id="meal-section" className="cards-container">
-          {isLoading ? (
-            <h2>Loading Meals...</h2>
-          ) : (
-            <Card apiKey={apiKey} dishArray={dishArray} />
-          )}
+
+        {errorPage && <ErrorPage />}
+        <div className="mealplan_and_cardscontainer">
+          {/* first child (cards section) */}
+          <div id="meal-section" className="cards-container">
+            {isLoading ? (
+              <h2>Loading Meals...</h2>
+            ) : (
+              <Card apiKey={apiKey} dishArray={dishArray} />
+            )}
+          </div>
+
+          {/* second child (meal plan section) */}
+          <div id="meal-plan-section">
+            <MealPlan
+              apiKey={apiKey}
+              dishArray={dishArray}
+              caloriesPerMeal={caloriesPerMeal}
+            />
+          </div>
         </div>
       </div>
 

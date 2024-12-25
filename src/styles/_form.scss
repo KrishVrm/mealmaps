@@ -25,9 +25,15 @@ input {
   border: 2px solid white;
   color: white;
   border-color: var(--light-gray);
-  padding: 13px;
+  padding: 10px 13px;
   font-size: 14px;
   font-family: var(--sans-serif-font);
+  transition: all ease 100ms;
+
+  &:hover,
+  &:focus {
+    border-color: var(--lime-green);
+  }
 }
 
 .label-container {
@@ -93,5 +99,15 @@ input {
     gap: 0.6rem;
     text-align: center;
     margin-bottom: 2rem;
+  }
+}
+
+.gender-image-container {
+  height: 25rem;
+  width: auto;
+
+  svg {
+    height: 100%;
+    width: 100%;
   }
 }

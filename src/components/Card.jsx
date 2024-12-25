@@ -33,7 +33,7 @@ const Card = ({ dishArray, apiKey }) => {
     setDishID(e.target.id);
   };
 
-  // Nutrition by ID API
+  // Nutrition by ID API (more data about the dish, pushed to window)
   useEffect(() => {
     if (dishArray.length !== 0) {
       (async () => {
@@ -42,7 +42,7 @@ const Card = ({ dishArray, apiKey }) => {
           const response = await axios.get(
             `https://api.spoonacular.com/recipes/${dishID}/information?apiKey=${apiKey}&includeNutrition=true`
           );
-          console.log("this is nutrition widget", response);
+          console.log("this is nutrition widget", response.data.dishTypes);
           setDishData((prev) => {
             return {
               ...prev,
