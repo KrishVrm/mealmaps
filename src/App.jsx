@@ -56,6 +56,14 @@ function App() {
         borderColor: "var(--lime-green)", // Change border color on hover
       },
     }),
+    placeholder: (baseStyles, state) => ({
+      ...baseStyles,
+      color: "var(--white)", // Change the placeholder text color
+    }),
+    singleValue: (baseStyles, state) => ({
+      ...baseStyles,
+      color: "var(--white)", // Change the text color of the selected value
+    }),
     menu: (baseStyles) => ({
       ...baseStyles,
       background: "var(--gray)",
@@ -232,7 +240,7 @@ function App() {
             <h4 className="input-title">Height</h4>
             <input
               type="text"
-              placeholder="Your vertical greatness in numbers?"
+              placeholder="Your altitude in life?"
               onChange={(e) => {
                 // const heightRegex =
                 //   /^(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-6][0-9]|27[0-2])$/;
@@ -262,7 +270,7 @@ function App() {
             <h4 className="input-title">Weight</h4>
             <input
               type="text"
-              placeholder="How much gravity loves you?"
+              placeholder="Your pull on the planet?"
               onChange={(e) => {
                 // const weightRegex = /^(?:[0-2][0-7][0-2]|442)$/;
                 // if (stringRegex.test(e.target.value)) {
