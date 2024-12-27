@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { IoCloseCircleOutline } from "react-icons/io5";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Window = ({
   setIsWindowOpen,
@@ -66,7 +65,6 @@ const Window = ({
         ) : (
           <>
             <div className="first-container">
-              <AiOutlineLoading3Quarters />
               <div
                 className="card-image"
                 style={{

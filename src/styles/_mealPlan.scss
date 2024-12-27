@@ -1,6 +1,13 @@
 .mealplan_and_cardscontainer {
   display: grid;
   grid-template-columns: 50% 50%;
+
+  @include breakpoint-down(small) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 }
 
 .meal_plan_container {
@@ -15,11 +22,18 @@
   &_card {
     background-color: var(--gray);
     display: grid;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 20% auto;
     width: 25rem;
     align-items: center;
-    gap: 3rem;
     padding: 1rem;
+    gap: 2rem;
     width: 32rem;
+    @include breakpoint-down(medium) {
+      width: 30rem;
+    }
+
+    @include breakpoint-down(small) {
+      width: 90vw;
+    }
   }
 }

@@ -64,6 +64,10 @@
   gap: 3rem;
   position: relative;
   margin: 0 2rem;
+  justify-content: center;
+  @include breakpoint-down(small) {
+    margin: 0 0;
+  }
 }
 .window {
   position: fixed;
